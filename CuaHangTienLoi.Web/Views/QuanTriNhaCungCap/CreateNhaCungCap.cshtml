@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Thêm nhà cung cấp";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container m-5" style="height: 100%">
+    @using (Html.BeginForm("CreateNhaCungCap", "QuanTriNhaCungCap", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+
+    <div class="container" style="height: 100%">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Tên nhà cung cấp</label>
+            <input type="text" class="form-control" id="tenncc" name="tenncc">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Số điện thoại liên hệ</label>
+            <input type="text" class="form-control" id="lienhe" name="lienhe">
+        </div>
+        <button type="submit" name="save" class="btn btn-outline-primary">Lưu và đóng</button>
+        <button type="submit" name="saveclose" class="btn btn-primary">Lưu</button>
+        <button type="submit" name="cancel" class="btn btn-danger">Huỷ</button>
+    </div>
+    }
+</div>

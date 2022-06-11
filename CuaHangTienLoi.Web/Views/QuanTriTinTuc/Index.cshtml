@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Quản trị tin tức";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="title-main">
+        @using (Html.BeginForm("CreateTinTuc", "QuanTriTinTuc", FormMethod.Post))
+        {
+            <input class="btn btn-primary m-3" type="submit" value="Thêm" name="add" />
+        }
+    </div>
+    <div class="main-ct">
+
+        <div class="table-wp">
+            @if (Model != null)
+            {
+                int i = 1;
+                <table id="Mytable" class="tablesorter table">
+                    <thead>
+                        <!--<tr>
+                            <th style="width:40px;">STT</th>
+                            <th>Tiêu đề</th>
+                            <th>Nội dung</th>-->
+                            @*<th>Lượt Mua</th>*@
+                            <!--<th>Ngày Đăng</th>
+                            <th style="width:135px">Chức năng</th>
+                        </tr>-->
+
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th>Tiêu đề</th>
+                            <th>Nội dung</th>
+                            <th>Ngày đăng</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            var text = "";
+                            @*<tr>
+                                <td style="text-align: center">@i</td>
+                                <td style="width:200px;">@item.TieuDe</td>
+                                <td style="text-align:center">@item.NoiDung</td>
+                                <td style="text-align:center">@item.NgayDang.ToString("dd-MM-yyyy")</td>
+                                <td style="text-align: center">
+                                    <a href="/ManagerSanPham/EditSanPham?t=@item.MaTin" class="sub-sm"><i class="fa fa-pencil"></i></a>
+                                    <a href="/ManagerSanPham/DeleteSanPham?t=@item.MaTin" class="sub-sm"><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>*@
+
+                            <tr class="cell-1">
+                                @*<td class="text-center">1</td>*@
+                                <td>@i</td>
+                                <td>@item.TieuDe</td>
+                                <td>@item.NoiDung</td>
+                                <td>@item.NgayDang.ToString("dd-MM-yyyy")</td>
+                                <td>
+                                    
+                                    <div class="dropdown">
+                                        <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-ellipsis-h text-black-50"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                            <a href="/QuanTriTinTuc/EditTinTuc?t=@item.MaTin" class="dropdown-item d-flex">Chỉnh sửa</a>
+                                            <a href="/QuanTriTinTuc/DeleteTinTuc?t=@item.MaTin" class="dropdown-item d-flex">Xoá</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                @*<td><i class="fa fa-ellipsis-h text-black-50"></i></td>*@
+                            </tr>
+                            i++;
+                        }
+
+
+                    </tbody>
+                </table>
+            }
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#Mytable').dataTable({
+                        "lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]]
+                    });
+                });
+            </script>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

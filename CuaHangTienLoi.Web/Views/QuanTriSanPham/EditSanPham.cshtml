@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Chỉnh sửa sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container m-5" style="height: 100%">
+    @using (Html.BeginForm("EditSanPham", "QuanTriSanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        if (Model != null)
+        {
+    <div class="container" style="height: 100%">
+        <input type="hidden" value="@Model.MaSanPham" name="masanpham" />
+        <div class="form-group">
+            <label class="lb-mid">Danh mục</label>
+            <select disabled="disabled" class="custom-select" name="ddlChudeSanpham" id="dllChudeSanpham">
+                <option value="@Model.DanhMuc.MaDanhMuc">@Model.DanhMuc.TenDanhMuc</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="lb-mid">Nhà cung cấp</label>
+            <select disabled="disabled" class="custom-select" name="ddlNhaSanXuat" id="ddlNhaSanXuat">
+                <option value="@Model.NhaCungCap.MaNhaCungCap">@Model.NhaCungCap.TenNhaCungCap</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="lb-mid">Tên sản phẩm</label>
+            <input type="text" class="form-control" name="tensanpham" id="tensanpham" value="@Model.TenSanPham" />
+        </div>
+
+        <div class="input-group">
+            <label class="lb-mid">Hình Ảnh</label>
+            <input type="text" placeholder="Link đường dẫn ảnh" class="bt-mid" id="linkduongdanslide" name="linkduongdanslide" readonly="readonly" value="@Model.LinkAnh" />
+            <div class="wp-upload">
+                <input type="file" name="file" id="fileupload" class="file " accept="image/*">
+            </div>
+        </div>
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" name="trangthai" id="trangthai" value="@Model.TinhTrang">
+            <label class="form-check-label" for="exampleCheck1">Còn hàng</label>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Đơn giá</label>
+            <input type="text" class="form-control" name="dongia" id="dongia" value="@Model.DonGia">
+            <small id="emailHelp" class="form-text text-muted">Giá ban đầu của sản phẩm.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Giảm giá</label>
+            <input type="text" class="form-control" name="giamgia" id="giamgia" value="@Model.DonGia">
+            <small id="emailHelp" class="form-text text-muted">Giá giảm theo đơn vị số nguyên dương. Ví dụ 5000</small>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Giảm giá theo phần trăm</label>
+            <input type="text" class="form-control" name="sale" id="sale" value="@Model.PhanTramGiamGia">
+            <small id="emailHelp" class="form-text text-muted">Giá giảm theo đơn vị phần trăm. Ví dụ 5</small>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Lượt Mua</label>
+            <input type="text" class="form-control" name="luotmua" id="luotmua" value="@Model.LuotMua">
+            <small id="emailHelp" class="form-text text-muted">Lượt mua của sản phẩm.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Số Lượng</label>
+            <input type="text" class="form-control" name="soluong" id="soluong" value="@Model.SoLuong">
+            <small id="emailHelp" class="form-text text-muted">Số lượng sản phẩm. Ví dụ; 10</small>
+        </div>
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" name="xoatam" id="xoatam" value="@Model.DaXoa">
+            <label class="form-check-label" for="exampleCheck1">Tạm xoá</label>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Mô tả</label>
+            <textarea class="form-control" id="txtDetail" name="txtDetail">@Model.MoTa</textarea>
+        </div>
+        <button type="submit" name="saveclose" class="btn btn-outline-primary">Lưu và đóng</button>
+        <button type="submit" name="cancel" class="btn btn-danger">Huỷ</button>
+    </div>
+        }
+    }
+</div>

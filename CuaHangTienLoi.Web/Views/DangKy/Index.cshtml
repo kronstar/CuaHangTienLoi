@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">
+                Đăng ký
+            </h5>
+            <button type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form>
+            <div class="row modal-body">
+                <div class="col-12 col-lg-4">
+                    <div class="form-group">
+                        <label for="tendangnhapdangky">Tên đăng nhập</label>
+                        <input type="text"
+                               class="form-control"
+                               name="tendangnhapdangky"
+                               id="tendangnhapdangky"
+                               required />
+                    </div>
+                    <div class="form-group">
+                        <label for="matkhaudangky">Mật khẩu</label>
+                        <input type="password"
+                               class="form-control"
+                               name="matkhaudangky"
+                               id="matkhaudangky"
+                               required />
+                    </div>
+                    <div class="form-group">
+                        <label for="nhaplaimatkhau">Nhập lại mật khẩu</label>
+                        <input type="password"
+                               class="form-control"
+                               name="nhaplaimatkhau"
+                               id="nhaplaimatkhau"
+                               required />
+                    </div>
+                </div>
+                <div class="col-12 col-lg">
+                    <div class="form-group">
+                        <label for="hoten">Họ và tên</label>
+                        <input type="text"
+                               class="form-control"
+                               name="hoten"
+                               id="hoten"
+                               required />
+                    </div>
+                    <div class="form-group">
+                        <label for="ngaysinh">Ngày sinh</label>
+                        <input type="date"
+                               class="form-control"
+                               name="ngaysinh"
+                               id="ngaysinh"
+                               min="1850-01-01"
+                               max="2005-12-31"
+                               required />
+                    </div>
+                    <div class="form-group">
+                        <label for="sodienthoai">Số điện thoại</label>
+                        <input type="tel"
+                               class="form-control"
+                               name="sodienthoai"
+                               id="sodienthoai"
+                               pattern="[0][0-9]{9}"
+                               required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email"
+                               class="form-control"
+                               name="email"
+                               id="email"
+                               required />
+                    </div>
+                    <div class="form-group">
+                        <label for="diachi">Địa chỉ</label>
+                        <input type="text"
+                               class="form-control"
+                               name="diachi"
+                               id="diachi"
+                               required />
+                    </div>
+
+                    <label for="exampleInputAdd">Giới tính</label><br />
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input"
+                               type="radio"
+                               name="gioitinh"
+                               id="male"
+                               value="male" />
+                        <label class="form-check-label"
+                               for="male">Nam</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input"
+                               type="radio"
+                               name="gioitinh"
+                               id="female"
+                               value="female" />
+                        <label class="form-check-label"
+                               for="female">Nữ</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal">
+                    Thoát
+                </button>
+                <button type="submit" class="btn btn-primary" name="dangky" id="dangky" onclick="return validate3();">
+                    Đăng ký
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+

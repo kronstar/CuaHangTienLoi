@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Thông báo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (ViewBag.message == null)
+{
+<div class="jumbotron" style="margin-bottom: 0px;">
+    <h1 class="display-4" style="color: orangered;">Thanh toán thất bại!</h1>
+    <p class="lead">Đã xảy ra lỗi trong quá trình thanh toán. Đơn hàng sẽ được chuyển sang Thanh toán khi nhận hàng.</p>
+    <p class="lead">Vui lòng kiểm tra Mail để xem chi tiết đơn đặt hàng.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="@Url.Action("Index","Home")" role="button">Trở về trang chủ</a>
+    </p>
+</div>
+}
+else
+{
+<div class="jumbotron" style="margin-bottom: 0px;">
+    <h1 class="display-4" style="color: forestgreen;">Thanh toán thành công!</h1>
+    <p class="lead">Đơn hàng của bạn đã được xác nhận.</p>
+    <p class="lead">Vui lòng kiểm tra Mail để xem chi tiết đơn đặt hàng.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="@Url.Action("Index","Home")" role="button">Trở về trang chủ</a>
+    </p>
+</div>
+}
