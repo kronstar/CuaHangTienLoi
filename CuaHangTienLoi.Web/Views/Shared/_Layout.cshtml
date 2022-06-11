@@ -1,0 +1,469 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <link rel="stylesheet" href="~/Content/style.css" />
+    <link rel="stylesheet" href="~/Content/vendors/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="~/Content/css/product.css" />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/Content/vendors/bootstrap/bootstrap.min.css" />
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="~/Content/vendors/animate/animate.css" />
+
+    <!-- Themefisher icon -->
+    <link rel="stylesheet" href="~/Content/vendors/themefisher-font/style.css" />
+
+    <!-- Slick.css -->
+    <link rel="stylesheet" href="~/Content/vendors/slick/slick-theme.css" />
+    <link rel="stylesheet" href="~/Content/vendors/slick/slick.css" />
+
+    <!-- Script -->
+    <script src="~/Content/vendors/popper/popper.min.js"></script>
+    <script src="~/Content/vendors/jquery/jquery.slim.min.js"></script>
+    <script src="~/Content/vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery.cookie.js"></script>
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/myfocus-2.0.4.min.js"></script>
+    <script src="~/Content/js/script.js"></script>
+</head>
+<body>
+    <!-- Header start -->
+    <section id="header">
+        <!-- Primary navbar start -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <!-- Brand -->
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">CUAHANGIENLOI</a>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Nav -->
+            <div class="collapse navbar-collapse"
+                 id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="@Url.Action("Index", "Home")">
+                            Trang chủ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "TinTuc")">Tin tức</a>
+                    </li>
+                    <li class="nav-item">
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "SanPham")">Cửa hàng</a>
+
+                        @* <div class="dropdown">
+                    <i clas></i>
+                    <button class="btn dropdown dropdown-slide" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Cửa hàng
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="menu">
+                        @Html.Action("Menu", "Home")
+                    </div>
+                </div>*@
+                    </li>
+                </ul>
+                @*<div id="search">
+                    <form action="/search" class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" name="tim" type="text" placeholder="Tìm kiếm" value="@Request.Params["search"]" aria-label="Search">
+                        <input type="submit" value="Tìm Kiếm" />
+                    </form>
+                </div>*@
+
+                <div id="search">
+                    <form action="/search">
+                        <input class="form-control mr-sm-2" type="search" name="tim" placeholder="Tìm kiếm sản phẩm" value="@Request.Params["tim"]" />
+                        @*<input type="submit" value="Tìm Kiếm" />*@
+                    </form>
+                </div>
+
+
+                <!-- Cart -->
+                <ul class="top-menu text-right list-inline" style="margin:0px;">
+                    <li class="dropdown cart-nav dropdown-slide">
+                        <a href="#!"
+                           class="btn dropdown"
+                           data-toggle="dropdown"
+                           data-hover="dropdown"><i class="tf-ion-android-cart"></i>  Giỏ hàng</a>
+                        <div class="dropdown-menu cart-dropdown dropdown-menu-right" style="min-width:300px;">
+
+                            <ul class="text-center cart-buttons btn-link">
+                                <li>
+                                    @Html.Action("CartItem", "Home")
+                                </li>
+                                <li>
+                                    <a href="#"
+                                       class="btn btn-primary">Mua ngay</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Top navbar start -->
+                <ul class="nav justify-content-end">
+                    @if (Session["nguoidung"] != null)
+                    {
+                        @*<div class="dropdown">
+                    <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tài khoản
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item">Xin chào <span>@Session["nguoidung"]</span></a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/Home/DangXuat" id="regiter-tv">Đăng Xuất</a>
+                    </div>
+                </div>*@
+
+                        <div class="dropdown">
+                            <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Quản lý tài khoản
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item">Xin chào <span>@Session["nguoidung"]</span></a>
+                                <div class="dropdown-divider"></div>
+                                @if (Session["mataikhoan"].ToString().Contains("1"))
+                                {
+                                    <a class="dropdown-item" href="" id="regiter-tv">Thông tin tài khoản</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "QuanTri")" id="regiter-tv">Trang quản trị</a>
+                                    <a class="dropdown-item" href="/Home/DangXuat" id="regiter-tv">Đăng Xuất</a>
+                                }
+                                else
+                                {
+                                    <a class="dropdown-item" href="" id="regiter-tv">Đơn hàng</a>
+                                    <a class="dropdown-item" href="" id="regiter-tv">Tài khoản</a>
+                                    <a class="dropdown-item" href="/Home/DangXuat" id="regiter-tv">Đăng Xuất</a>
+                                }
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="dropdown">
+                            <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Tài khoản
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <button type="button"
+                                        id="login-hd"
+                                        class="btn dropdown-item"
+                                        data-toggle="modal"
+                                        data-target="#modal-signin">
+                                    Đăng nhập
+                                </button>
+                                <button type="button"
+                                        id="login-hd"
+                                        class="btn dropdown-item"
+                                        data-toggle="modal"
+                                        data-target="#modal-signup">
+                                    Đăng ký
+                                </button>
+                            </div>
+                        </div>
+
+                    }
+
+                </ul>
+                <!-- Top navbar end -->
+
+            </div>
+            <!-- Nav end -->
+        </nav>
+        <!-- Primary navbar end -->
+    </section>
+    <!-- Header end -->
+
+    <div class="body">
+        @RenderBody()
+    </div>
+
+    <!-- Footer start -->
+    <section id="footer">
+        <div class="row pl-1 pr-1 pr-sm-2 pl-sm-2 pr-lg-3 pl-lg-3 bg-light">
+            <div class="col-12 col-sm-6 col-lg-3 mt-5">
+                <p class="footer-phone">Điện thoại liên hệ</p>
+                <p>0123456789</p>
+                <p class="footer-hotline">Hotline</p>
+                <p>19001900</p>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3 mt-5">
+                <p class="footer-email">Email liên hệ</p>
+                <p>cskh@chtl.com</p>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3 mt-5">
+                <p class="phone">Điều khoản sử dụng website</p>
+                <p>0123456789</p>
+                <p class="hotline">Chính sách bảo mật</p>
+                <p>19001900</p>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3 mt-5">
+                <p class="phone">Chính sách và quy định chung</p>
+                <p>Thông tin về sản phẩm</p>
+                <p>Chính sách bảo trì, bảo hành và đổi trả hàng hoá</p>
+                <p>Thông tin về giá cả</p>
+                <p>Quy định về thanh toán</p>
+                <p>Chính sách vận chuyển hàng hoá</p>
+            </div>
+        </div>
+
+        <div class="bottom-nav col-12 col-sm-12 col-lg-12 bg-dark text-lg-center">
+            <p class="p-3 text-light">
+                Đồ án môn học Lập trình web - nhóm 5
+            </p>
+        </div>
+    </section>
+    <!-- Footer end -->
+
+    @using (Html.BeginForm("DangNhap", "Home", FormMethod.Post))
+    {
+        <!-- Modal sign in start -->
+        <div class="modal fade"
+             id="modal-signin"
+             data-backdrop="static"
+             data-keyboard="false"
+             tabindex="-1"
+             aria-labelledby="staticBackdropLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">
+                            Đăng nhập
+                        </h5>
+                        <button type="button"
+                                class="close"
+                                data-dismiss="modal"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="tendangnhap">Tên đăng nhập</label>
+                                <input type="text"
+                                       class="form-control"
+                                       name="tendangnhap"
+                                       id="tendangnhap"
+                                       aria-describedby="emailHelp"
+                                       required />
+                            </div>
+                            <div class="form-group">
+                                <label for="formSinInPasw">Mật khẩu</label>
+                                <input type="password"
+                                       class="form-control"
+                                       name="matkhau"
+                                       id="matkhau"
+                                       required />
+                            </div>
+                            <button type="button" class="btn btn-link">
+                                Quên mật khẩu
+                            </button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button"
+                                    class="btn btn-secondary"
+                                    data-dismiss="modal">
+                                Thoát
+                            </button>
+                            <button type="submit" class="btn btn-primary" name="btndangnhap" onclick="return validate();">
+                                Đăng nhập
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal sign in end -->
+
+        <script>
+            function validate() {
+                var tendangnhap = $('#tendangnhap'),
+                    matkhau = $('#matkhau')
+                if (tendangnhap.val() == '') {
+                    tendangnhap.focus();
+                    return false;
+                }
+                else {
+
+                }
+                if (matkhau.val() == '') {
+                    matkhau.focus();
+                    return false;
+                }
+                else {
+
+                }
+                return true;
+            }
+        </script>
+
+    }
+
+    @using (Html.BeginForm("DangKy", "Home", FormMethod.Post))
+    {
+        <!-- Modal sign up start -->
+        <div class="modal fade bd-example-modal-lg"
+             id="modal-signup"
+             data-backdrop="static"
+             data-keyboard="false"
+             tabindex="-1"
+             aria-labelledby="staticBackdropLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">
+                            Đăng ký
+                        </h5>
+                        <button type="button"
+                                class="close"
+                                data-dismiss="modal"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form>
+                        <div class="row modal-body">
+                            <div class="col-12 col-lg-4">
+                                <div class="form-group">
+                                    <label for="tendangnhapdangky">Tên đăng nhập</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           name="tendangnhapdangky"
+                                           id="tendangnhapdangky"
+                                           required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="matkhaudangky">Mật khẩu</label>
+                                    <input type="password"
+                                           class="form-control"
+                                           name="matkhaudangky"
+                                           id="matkhaudangky"
+                                           required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="nhaplaimatkhau">Nhập lại mật khẩu</label>
+                                    <input type="password"
+                                           class="form-control"
+                                           name="nhaplaimatkhau"
+                                           id="nhaplaimatkhau"
+                                           required />
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg">
+                                <div class="form-group">
+                                    <label for="hoten">Họ và tên</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           name="hoten"
+                                           id="hoten"
+                                           required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="ngaysinh">Ngày sinh</label>
+                                    <input type="date"
+                                           class="form-control"
+                                           name="ngaysinh"
+                                           id="ngaysinh"
+                                           min="1850-01-01"
+                                           max="2005-12-31"
+                                           required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="sodienthoai">Số điện thoại</label>
+                                    <input type="tel"
+                                           class="form-control"
+                                           name="sodienthoai"
+                                           id="sodienthoai"
+                                           pattern="[0][0-9]{9}"
+                                           required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email"
+                                           class="form-control"
+                                           name="email"
+                                           id="email"
+                                           required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="diachi">Địa chỉ</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           name="diachi"
+                                           id="diachi"
+                                           required />
+                                </div>
+
+                                <label for="exampleInputAdd">Giới tính</label><br />
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input"
+                                           type="radio"
+                                           name="gioitinh"
+                                           id="male"
+                                           value="male" />
+                                    <label class="form-check-label"
+                                           for="male">Nam</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input"
+                                           type="radio"
+                                           name="gioitinh"
+                                           id="female"
+                                           value="female" />
+                                    <label class="form-check-label"
+                                           for="female">Nữ</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button"
+                                    class="btn btn-secondary"
+                                    data-dismiss="modal">
+                                Thoát
+                            </button>
+                            <button type="submit" class="btn btn-primary" name="dangky" id="dangky" onclick="return validate3();">
+                                Đăng ký
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal sign up end -->
+
+        <script>
+            function validate3() {
+                var password = document.getElementById("matkhaudangky").value;
+                var confirmPassword = document.getElementById("nhaplaimatkhau").value;
+                if (password != confirmPassword) {
+                    alert("Passwords do not match.");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    }
+</body>
+</html>

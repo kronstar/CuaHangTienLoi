@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Chỉnh sửa danh mục";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@*<div class="nav-main">
+    <a href="/Manager"><i class="fa fa-home"></i><span>Trang chủ</span></a>
+    <a href="/Manager"><span class="active-nav">TABLE MENU SẢN PHẨM</span></a>
+</div>
+<div class="content-main">
+    @using (Html.BeginForm("EditDanhMuc", "QuanTriDanhMuc", FormMethod.Post))
+    {
+        if (Model != null)
+        {
+            <div class="title-main">
+
+                <h3><i class="fa fa-cubes"></i>TABLE MENU SẢN PHẨM</h3>
+                <div class="btn-submit">
+                    <input class="bt" type="submit" value="&#xf046; Lưu&Đóng" name="saveclose" onclick="return validate();" />
+                    <input class="bt" type="submit" value="&#xf00d; Hủy" name="cancel" />
+                    <input type="hidden" value="@Model.MaDanhMuc" name="idchude" />
+                </div>
+
+            </div>
+            <div class="main-ct">
+
+
+                <div class="input-group">
+                    <label class="lb-mid">Tên Chủ đề</label>
+                    <input type="text" placeholder="Nhập Tên Menu của sản phẩm" id="tenchudeslide" class="bt-mid" name="tenchude" value="@Model.TenDanhMuc" />
+                </div>
+                <div class="input-group">
+                    <label class="lb-mid">Ẩn hiện</label>
+                    @if (Model.TrangThai)
+                    {
+                        <input type="checkbox" name="show" checked="checked" />
+                    }
+                    else
+                    {
+                        <input type="checkbox" name="show" />
+                    }
+
+                </div>
+
+            </div>
+            <div class="clear"></div>
+        }
+    }
+</div>*@
+
+<div class="container m-5" style="height: 100%">
+    @using (Html.BeginForm("EditDanhMuc", "QuanTriDanhmuc", FormMethod.Post))
+    {
+        if (Model != null)
+        {
+
+        <div class="container" style="height: 100%">
+            <div class="form-group">
+                <input type="hidden" value="@Model.MaDanhMuc" name="madanhmuc" />
+                <label for="exampleInputEmail1">Tên danh mục</label>
+                <input type="text" placeholder="Tên danh mục" id="tenchudeslide" class="form-control" name="tendanhmuc" value="@Model.TenDanhMuc" />
+                <small id="emailHelp" class="form-text text-muted">Tên danh mục của các sản phẩm.</small>
+            </div>
+            <div class="form-check">
+                @if (Model.TrangThai)
+                {
+                    <input type="checkbox" name="show" checked="checked" />
+                }
+                else
+                {
+                    <input type="checkbox" name="show" />
+                }
+                <label class="form-check-label" for="anhienchude">Hiển thị</label>
+            </div>
+            <button type="submit" name="saveclose" class="btn btn-outline-primary">Lưu và đóng</button>
+            <button type="submit" name="cancel" class="btn btn-danger">Huỷ</button>
+        </div>
+        }
+    }
+</div>

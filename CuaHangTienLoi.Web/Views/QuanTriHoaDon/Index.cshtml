@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Quản lý hoá đơn";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="main-ct">
+
+
+        <div class="table-wp">
+            @if (Model != null)
+            {
+                int i = 1;
+                <table id="Mytable" class="tablesorter table">
+                    <thead>
+                        <tr>
+                            <th style="width:40px;">STT</th>
+                            @*<th>Tên Khách Hàng</th>*@
+                            <th>Người Nhận</th>
+                            <th>Địa Chỉ</th>
+                            <th>Số ĐT</th>
+                            <th>Email</th>
+                            <th>Ngày ĐH</th>
+                            <th>Ghi chú</th>
+                            <th>Giá Tiền</th>
+                            <th>Trạng thái</th>
+                            @*<th>Ghi Chú</th>*@
+                            @*<th style="width:135px">Chức năng</th>*@
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            var text = "";
+                            <tr>
+                                <td style="text-align: center">@i</td>
+                                @*<td>@item.User.TenKhachHang</td>*@
+                                <td>@item.HoTenNguoiMua</td>
+                                <td>@item.DiaChi</td>
+                                <td>@item.DienThoai</td>
+                                <td>@item.Email</td>
+                                <td style="text-align:center">@item.NgayDat.ToString("dd-MM-yyyy")</td>
+                                <td>@item.GhiChu</td>
+                                @*<td style="text-align:center">@item.NgayGiaoHang.ToString("dd-MM-yyyy")</td>*@
+                                <td style="text-align:center">@item.TongHoaDon.ToString("N0")</td>
+                                <td style="text-align:center">
+
+                                    @if (@item.TrangThai)
+                                    {
+                                        text = "Đã thanh toán";
+                                    }
+                                    else
+                                    {
+                                        text = "Chưa thanh toán";
+                                    }
+                                    @text
+                                </td>
+                                @*<td>@item.GhiChu</td>*@
+                                @*<td style="text-align: center">
+                                       <a href="/Manager/EditChuDe?t=" class="sub-sm"><i class="fa fa-pencil"></i></a>
+                                       <a href="/Manager/DeleteChuDe?t=" class="sub-sm"><i class="fa fa-times"></i></a>
+                                    </td>*@
+                            </tr>
+                            i++;
+                        }
+
+
+                    </tbody>
+                </table>
+            }
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#Mytable').dataTable({
+                        "lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]]
+                    });
+                });
+            </script>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

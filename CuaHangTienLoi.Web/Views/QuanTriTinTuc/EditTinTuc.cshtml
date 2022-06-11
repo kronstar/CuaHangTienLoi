@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Chỉnh sửa tin tức";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="container m-5" style="height: 100%">
+    @using (Html.BeginForm("EditTinTuc", "QuanTriTinTuc", FormMethod.Post))
+    {
+        if (Model != null)
+        {
+
+    <div class="container" style="height: 100%">
+        <div class="form-group">
+            <input type="hidden" value="@Model.MaTin" name="matin" />
+            <label for="exampleInputEmail1">Tiêu đề</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="tieude" value="@Model.TieuDe">
+            <small id="emailHelp" class="form-text text-muted">Tiêu đề của bảng tin.</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nội dung</label>
+            <textarea class="form-control" id="noidung" name="noidung">@Model.NoiDung</textarea>
+        </div>
+        <button type="submit" name="saveclose" class="btn btn-outline-primary">Lưu và đóng</button>
+        <button type="submit" name="cancel" class="btn btn-danger">Huỷ</button>
+    </div>
+        }
+    }
+</div>

@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script>
+    function validate2() {
+        var tendn = $('#tendangnhap'),
+            matkhau = $('#matkhau')
+        if (tendn.val() == '') {
+            tendn.focus();
+            return false;
+        }
+        else {
+            tendn.css({ "border-color": "1px solid #d3d3d3" });
+        }
+        if (matkhau.val() == '') {
+            matkhau.focus();
+            return false;
+        }
+        else {
+            matkhau.css({ "border-color": "1px solid #d3d3d3" });
+        }
+    }
+</script>
+
+<br />
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">
+                    Đăng nhập
+                </h5>
+            </div>
+            @using (Html.BeginForm("DangNhapKH", "DangNhap", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="tendangnhap">Tên đăng nhập</label>
+                        <input type="text"
+                               class="form-control"
+                               name="tendangnhap"
+                               id="tendangnhap"
+                               aria-describedby="emailHelp"
+                               required />
+                    </div>
+                    <div class="form-group">
+                        <label for="formSinInPasw">Mật khẩu</label>
+                        <input type="password"
+                               class="form-control"
+                               name="matkhau"
+                               id="matkhau"
+                               required />
+                    </div>
+                    <button type="button" class="btn btn-link">
+                        Quên mật khẩu
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal">
+                        Thoát
+                    </button>
+                    <button type="submit" class="btn btn-primary" name="btndangnhap" onclick="return validate2();">
+                        Đăng nhập
+                    </button>
+                </div>
+            }
+            </div>
+    </div>

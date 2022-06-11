@@ -1,0 +1,220 @@
+﻿@model CuaHangTienLoi.Web.Models.CartModel.CartModel
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script type="text/javascript">
+    function RemoveFromCart(id) {
+        if (confirm('Bạn muốn xóa sản phẩm này khỏi giỏ hàng?')) {
+            $.post("/Cart/RemoveFromCart", { "id": id },
+                function (data) {
+                    if (data.Code == '0') {
+                        alert('Xóa sản phẩm khỏi giỏ hàng thành công');
+                        window.location = '/Cart';
+                    }
+                });
+        }
+        return false;
+    }
+    function UpdateQuantity(id, quantity) {
+        $.post("/Cart/UpdateQuantity", { "id": id, "quantity": quantity },
+            function (data) {
+                if (data.Code == '0') {
+                    window.location = '/Cart';
+                }
+            });
+    }
+    function EmptyShoppingCart() {
+        $.post("/Cart/EmptyShoppingCart",
+            function (data) {
+                if (data.Code == '0') {
+                    window.location = '/Cart';
+                }
+            });
+    }
+    function Quickbuy(id) {
+        $.ajax({
+            url: "/Cart/AddToCart/" + id,
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (d) {
+                if (d.code == '0') {
+                    window.location.href = "/thanhtoan";
+                    location.reload()
+                }
+            }
+        });
+        return false;
+    }
+
+    $(document).ready(function () {
+        $('.box-sl').on("click", ".btn-update", function () {
+            var text = $(this).prev('.input-text').val();
+            var id = $(this).prev('.input-text').attr('id');
+            UpdateQuantity(id, text);
+        });
+    });
+
+
+
+</script>
+
+<div class="cart-sp" style="padding: 24px">
+    <div class="thong-tin-cart"><h1>Thông tin giỏ hàng</h1></div>
+    <div class="main-cart">
+
+        <fieldset>
+            <table id="shopping-cart-table" class="table">
+                <thead>
+                    <tr class="first last">
+                        <th scope="col">
+                            <span class="nobr">Sản phẩm</span>
+                        </th>
+                        <th scope="col">
+                            <span class="a-center">Số lượng</span>
+                        </th>
+                        <th scope="col" class="a-center">
+                            <span class="nobr">Giá</span>
+                        </th>
+                        <th scope="col" class="a-center">
+                            <span class="nobr">Thành tiền</span>
+                        </th>
+                        <th scope="col" class="a-center">
+                            &nbsp;
+                        </th>
+                    </tr>
+                </thead>
+                @if (Model != null && Model.Cart != null)
+                {
+                    <tbody>
+                        @foreach (var i in Model.Cart.ListItem)
+                        {
+                            <tr class="first last odd">
+                                <td class="td-first-cart" style="display: flex;">
+                                    <div class="col-md-2 col-lg-2 col-xl-2">
+                                        <img src="~/Content/img/product/@i.AnhSanPham"
+                                             class="img-fluid rounded-3" width="75" height="75" alt="Cotton T-shirt">
+                                    </div>
+                                    <div class="col-md-3 col-lg-3 col-xl-3">
+                                        <h6 class="text-muted">@i.TenSanPham</h6>
+                                    </div>
+                                </td>
+                                <td class="a-center">
+                                    <div class="box-sl">
+                                        @*<input name="cart[1821677][qty]" onkeypress="return" value="@i.SoLuong" id="@i.MaGioHang" size="4" title="Số lượng" class="input-text qty" maxlength="12">*@
+                                        <span>@i.SoLuong</span>
+                                        @*<button type="submit" name="update_cart_action" value="update_qty" title="Cập nhật số lượng" onclick="return Quickbuy();" class="button btn-update"><span>Cập nhật số lượng</span></button>*@
+                                    </div>
+                                </td>
+
+                                <td class="a-center ttgia">
+                                    <span class="cart-price">
+                                        <span class="price">
+                                            @if (i.PhanTramGiamGia > 0)
+                                            {
+
+                                                <span>@((i.DonGia - ((i.DonGia * i.PhanTramGiamGia) / 100)).ToString("N0")) VNĐ </span>
+                                            }
+                                            else
+                                            {
+
+                                                <span>@i.DonGia.ToString("N0") VNĐ</span>
+                                            }
+
+                                        </span>
+                                    </span>
+                                </td>
+
+                                <td class="a-center ttgia">
+                                    <span class="cart-price">
+                                        <span class="price">
+                                            @if (i.PhanTramGiamGia > 0)
+                                            {
+
+                                                <span>@((i.TongDon - ((i.TongDon * i.PhanTramGiamGia) / 100)).ToString("N0")) VNĐ </span>
+                                            }
+                                            else
+                                            {
+
+                                                <span>@i.TongDon.ToString("N0") VNĐ</span>
+                                            }
+                                        </span>
+                                    </span>
+                                </td>
+
+                                <td class="a-center ic-remove last">
+                                    <a href="javascript:;" title="Xóa sản phẩm" class="btn-remove2" onclick="RemoveFromCart(@i.MaGioHang);return false;">Xóa sản phẩm</a>
+                                    <script type="text/javascript">
+                                        $('#quantity_CartId').val('Quantity');
+                                    </script>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                }
+                <tfoot>
+                    <tr class="first last">
+                        <td colspan="50" class="a-right last" align="right">
+                            @*<a href="#" class="button">*@
+                            <button type="button" title=" Tiếp tục mua hàng" class="btn btn-primary btn-continue" name="" onclick="window.location = '/';">
+                                <span>
+                                    <span>Tiếp tục mua hàng</span>
+                                </span>
+                            </button>
+                            @*</a>*@
+                            <button type="submit" name="update_cart_action" title="Xóa hàng trong giỏ" onclick="EmptyShoppingCart(); return false;" class="btn btn-danger btn-empty m_l10" id="empty_cart_button">
+                                <span>
+                                    <span>Xóa giỏ hàng</span>
+                                </span>
+                            </button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </fieldset>
+
+        <div class="cart-collaterals">
+            <div class="totals">
+                <table id="shopping-cart-totals-table">
+                    <colgroup>
+                        <col />
+                        <col width="1" />
+                    </colgroup>
+                    <tfoot></tfoot>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td class="a-right" width="40%" colspan="2">
+                                Tổng cộng:
+                            </td>
+                            <td style="" class="a-right">
+                                @if (Model != null && Model.Cart != null)
+                                {
+                                    <span class="price1">@Model.Cart.GetTotal().ToString("N0")&nbsp;VNĐ</span>
+                                }
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ul class="checkout-types">
+                    <li>
+                        <button title="Thanh toán" class="btn btn-primary btn-proceed-checkout btn-checkout" onclick="window.location = '/thanhtoan';">
+                            <span>
+                                <span>
+                                    Thanh toán
+                                </span>
+
+                            </span>
+                        </button>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

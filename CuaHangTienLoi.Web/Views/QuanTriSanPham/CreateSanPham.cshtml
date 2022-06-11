@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "Thêm sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="container m-5" style="height: 100%">
+    @using (Html.BeginForm("CreateSanPham", "QuanTriSanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    <div class="container" style="height: 100%">
+        <div class="form-group">
+            <label class="lb-mid">Chủ Đề</label>
+            @if (ViewBag.TenDanhMuc != null)
+            {
+                <select name="ddlChudeSanpham" id="dllChudeSanpham" class="custom-select">
+                    @foreach (var i in ViewBag.TenDanhMuc)
+                    {
+                        <option value="@i.MaDanhMuc">@i.TenDanhMuc</option>
+
+                    }
+                </select>
+            }
+        </div>
+
+        <div class="form-group">
+            <label class="lb-mid">Nhà cung cấp</label>
+            @if (ViewBag.TenNhaCungCap != null)
+            {
+                <select name="ddlNhaSanXuat" id="ddlNhaSanXuat" class="custom-select">
+                    @foreach (var i in ViewBag.TenNhaCungCap)
+                    {
+                        <option value="@i.MaNhaCungCap">@i.TenNhaCungCap</option>
+                    }
+                </select>
+            }
+        </div>
+
+        <div class="form-group">
+            <label class="lb-mid">Tên sản phẩm</label>
+            <input type="text" class="form-control" name="tensanpham" id="tensanpham" />
+        </div>
+
+        <div class="input-group">
+            <label class="lb-mid">Hình Ảnh</label>
+            <input type="text" placeholder="Link đường dẫn ảnh" class="bt-mid" id="linkduongdanslide" name="linkduongdanslide" readonly="readonly" value="" />
+            <div class="wp-upload">
+                <input type="file" name="file" id="fileupload" class="file " accept="image/*">
+            </div>
+        </div>
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" name="trangthai" id="trangthai">
+            <label class="form-check-label" for="exampleCheck1">Còn hàng</label>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Đơn giá</label>
+            <input type="text" class="form-control" name="dongia" id="dongia">
+            <small id="emailHelp" class="form-text text-muted">Giá ban đầu của sản phẩm.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Giảm giá</label>
+            <input type="text" class="form-control" name="giamgia" id="giamgia">
+            <small id="emailHelp" class="form-text text-muted">Giá giảm theo đơn vị số nguyên dương. Ví dụ 5000</small>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Giảm giá theo phần trăm</label>
+            <input type="text" class="form-control" name="sale" id="sale">
+            <small id="emailHelp" class="form-text text-muted">Giá giảm theo đơn vị phần trăm. Ví dụ 5</small>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Lượt Mua</label>
+            <input type="text" class="form-control" name="luotmua" id="luotmua">
+            <small id="emailHelp" class="form-text text-muted">Lượt mua của sản phẩm.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Số Lượng</label>
+            <input type="text" class="form-control" name="soluong" id="soluong">
+            <small id="emailHelp" class="form-text text-muted">Số lượng sản phẩm. Ví dụ; 10</small>
+        </div>
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" name="xoatam" id="xoatam">
+            <label class="form-check-label" for="exampleCheck1">Tạm xoá</label>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Mô tả</label>
+            <textarea class="form-control" id="txtDetail" name="txtDetail"></textarea>
+        </div>
+        <button type="submit" name="saveclose" class="btn btn-outline-primary">Lưu và đóng</button>
+        <button type="submit" name="save" class="btn btn-primary">Lưu</button>
+        <button type="submit" name="cancel" class="btn btn-danger">Huỷ</button>
+    </div>
+    }
+</div>
+
+<script>
+    $('#fileupload').change(function () {
+        var file = $('#fileupload').val();
+        var ext = file.split('.').pop().toLowerCase();
+        if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+            alert('file bạn vừa chọn không được phép tải lên.');
+            $('#fileupload').val('');
+            $('#linkduongdanslide').val('');
+            return false;
+        }
+        $('#linkduongdanslide').val(file);
+    });
+</script>
