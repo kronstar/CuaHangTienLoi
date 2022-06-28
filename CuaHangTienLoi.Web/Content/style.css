@@ -57,25 +57,16 @@ FACEBOOK: https://www.facebook.com/themefisher
 
 -------------------------------------------------------------------*/
 /*=== MEDIA QUERY ===*/
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap');
-
-* {
-	font-family: 'IBM Plex Sans', sans-serif;
-}
 body {
-	line-height: 1.5;
-	font-family: 'IBM Plex Sans', sans-serif;
-	-webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 p {
-	font-family: 'IBM Plex Sans', sans-serif;
-	color: #757575;
-	font-size: 15px;
+  color: #757575;
+  font-size: 15px;
 }
 
-h1, h2, h3, h4, h5, h6{
-	font-family: 'IBM Plex Sans', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -282,13 +273,13 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 400px) {
   .category-box {
-	min-height: 250px;
+    min-height: 250px;
   }
 }
 
 @media (max-width: 480px) {
   .category-box {
-	min-height: 250px;
+    min-height: 250px;
   }
 }
 
@@ -298,13 +289,13 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 768px) {
   .category-box.category-box-2 {
-	min-height: 400px;
+    min-height: 400px;
   }
 }
 
 .category-box:hover img {
   -webkit-transform: scale(1.1);
-		  transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .category-box img {
@@ -312,7 +303,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
   width: 100%;
   height: auto;
   -webkit-backface-visibility: hidden;
-		  backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 
 .category-box a {
@@ -333,11 +324,11 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 768px) {
   .category-box .content {
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate(-50%, -50%);
-			transform: translate(-50%, -50%);
-	text-align: center;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    text-align: center;
   }
 }
 
@@ -350,7 +341,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 768px) {
   .category-box .content h3 {
-	font-size: 20px;
+    font-size: 20px;
   }
 }
 
@@ -452,7 +443,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 480px) {
   .call-to-action .subscription-form {
-	display: block;
+    display: block;
   }
 }
 
@@ -462,7 +453,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 480px) {
   .call-to-action .subscription-form input {
-	text-align: center;
+    text-align: center;
   }
 }
 
@@ -472,7 +463,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 480px) {
   .call-to-action .subscription-form .btn-main, .call-to-action .subscription-form .btn-solid-border, .call-to-action .subscription-form .btn-transparent, .call-to-action .subscription-form .btn-small {
-	width: 100%;
+    width: 100%;
   }
 }
 
@@ -494,12 +485,12 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
   opacity: 1;
   display: block;
   -webkit-transform: translate(0px, 0px);
-		  transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
   opacity: 1;
   visibility: visible;
   color: #777;
   -webkit-transform: translateY(0px);
-		  transform: translateY(0px);
+          transform: translateY(0px);
 }
 
 .dropdown-slide .dropdown-menu {
@@ -516,7 +507,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
   visibility: hidden;
   opacity: 0;
   -webkit-transform: translateY(30px);
-		  transform: translateY(30px);
+          transform: translateY(30px);
   transition: visibility 0.2s, opacity 0.2s, -webkit-transform 500ms cubic-bezier(0.43, 0.26, 0.11, 0.99);
   transition: visibility 0.2s, opacity 0.2s, transform 500ms cubic-bezier(0.43, 0.26, 0.11, 0.99);
   transition: visibility 0.2s, opacity 0.2s, transform 500ms cubic-bezier(0.43, 0.26, 0.11, 0.99), -webkit-transform 500ms cubic-bezier(0.43, 0.26, 0.11, 0.99);
@@ -524,8 +515,8 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 480px) {
   .dropdown-slide .dropdown-menu {
-	-webkit-transform: none;
-			transform: none;
+    -webkit-transform: none;
+            transform: none;
   }
 }
 
@@ -661,13 +652,13 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 480px) {
   .buttonPart li {
-	margin-bottom: 8px;
+    margin-bottom: 8px;
   }
 }
 
 @media (max-width: 768px) {
   .buttonPart li {
-	margin-bottom: 8px;
+    margin-bottom: 8px;
   }
 }
 
@@ -692,9 +683,9 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 480px) {
   .top-header .dropdown-menu {
-	right: 0;
-	left: 0;
-	max-width: 100%;
+    right: 0;
+    left: 0;
+    max-width: 100%;
   }
 }
 
@@ -705,14 +696,14 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 480px) {
   .top-header .contact-number {
-	text-align: center;
+    text-align: center;
   }
 }
 
 @media (max-width: 768px) {
   .top-header .contact-number {
-	text-align: center;
-	padding: 10px 0;
+    text-align: center;
+    padding: 10px 0;
   }
 }
 
@@ -724,8 +715,8 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 768px) {
   .top-header .top-menu {
-	text-align: center;
-	padding: 10px 0;
+    text-align: center;
+    padding: 10px 0;
   }
 }
 
@@ -747,13 +738,13 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 480px) {
   .top-header .logo {
-	padding: 10px;
+    padding: 10px;
   }
 }
 
 @media (max-width: 768px) {
   .top-header .logo {
-	padding: 10px;
+    padding: 10px;
   }
 }
 
@@ -833,15 +824,15 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 480px) {
   .navigation .menu-title {
-	display: inline-block;
-	padding-left: 10px;
+    display: inline-block;
+    padding-left: 10px;
   }
 }
 
 @media (max-width: 768px) {
   .navigation .menu-title {
-	display: inline-block;
-	padding-left: 10px;
+    display: inline-block;
+    padding-left: 10px;
   }
 }
 
@@ -1023,9 +1014,9 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
   padding: 12px 26px;
   opacity: 1;
   -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-		  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+          transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
   -webkit-transform-origin: 50% 50% 0px;
-		  transform-origin: 50% 50% 0px;
+          transform-origin: 50% 50% 0px;
   border-radius: 0;
   transition: 0.3s;
 }
@@ -1050,7 +1041,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
-		  transform: translateY(-50%);
+          transform: translateY(-50%);
   height: 50px;
   width: 50px;
   border-radius: 50%;
@@ -1077,7 +1068,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 768px) {
   .heroSliderArrow {
-	display: none !important;
+    display: none !important;
   }
 }
 
@@ -1128,7 +1119,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
   opacity: 0;
   transition: 0.2s;
   -webkit-transform: translateY(10px);
-		  transform: translateY(10px);
+          transform: translateY(10px);
 }
 
 .product-item .product-thumb .preview-meta li {
@@ -1157,7 +1148,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 .product-item:hover .preview-meta {
   opacity: 1;
   -webkit-transform: translateY(-20px);
-		  transform: translateY(-20px);
+          transform: translateY(-20px);
 }
 
 .product-item .product-content {
@@ -1191,7 +1182,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 .product-modal.fade .modal-dialog {
   -webkit-transform: translate(0, 0);
-		  transform: translate(0, 0);
+          transform: translate(0, 0);
 }
 
 .product-modal .close {
@@ -1214,13 +1205,13 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 480px) {
   .product-modal .modal-dialog {
-	width: 100%;
+    width: 100%;
   }
 }
 
 @media (max-width: 768px) {
   .product-modal .modal-dialog {
-	width: 100%;
+    width: 100%;
   }
 }
 
@@ -1251,13 +1242,13 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 480px) {
   .product-modal .modal-content .modal-body .product-short-details h2 {
-	margin-top: 15px;
+    margin-top: 15px;
   }
 }
 
 @media (max-width: 768px) {
   .product-modal .modal-content .modal-body .product-short-details h2 {
-	margin-top: 15px;
+    margin-top: 15px;
   }
 }
 
@@ -1268,7 +1259,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 480px) {
   .product-modal .modal-content .modal-body .product-short-details .product-price {
-	margin: 10px 0;
+    margin: 10px 0;
   }
 }
 
@@ -1633,14 +1624,14 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 .instagram-feed a:hover img {
   -webkit-filter: grayscale(10);
-		  filter: grayscale(10);
+          filter: grayscale(10);
 }
 
 .instagram-feed a img {
   width: 100%;
   max-height: 180px;
   -o-object-fit: cover;
-	 object-fit: cover;
+     object-fit: cover;
 }
 
 .dashboard-menu .active {
@@ -1662,21 +1653,21 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 768px) {
   .dashboard-menu li a {
-	padding: 10px 15px;
+    padding: 10px 15px;
   }
 }
 
 @media (max-width: 480px) {
   .dashboard-menu li a {
-	padding: 10px 5px;
+    padding: 10px 5px;
   }
 }
 
 @media (max-width: 400px) {
   .dashboard-menu li a {
-	padding: 10px 8px;
-	font-size: 12px;
-	margin-bottom: 6px;
+    padding: 10px 8px;
+    font-size: 12px;
+    margin-bottom: 6px;
   }
 }
 
@@ -2214,19 +2205,19 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 768px) {
   .coming-soon .block .count-down ul li {
-	font-size: 50px;
+    font-size: 50px;
   }
 }
 
 @media (max-width: 480px) {
   .coming-soon .block .count-down ul li {
-	font-size: 50px;
+    font-size: 50px;
   }
 }
 
 @media (max-width: 400px) {
   .coming-soon .block .count-down ul li {
-	font-size: 40px;
+    font-size: 40px;
   }
 }
 
@@ -2279,7 +2270,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 400px) {
   .account .block form .btn-main, .account .block form .btn-solid-border, .account .block form .btn-transparent, .account .block form .btn-small {
-	padding: 14px 19px;
+    padding: 14px 19px;
   }
 }
 
@@ -2500,22 +2491,22 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 480px) {
   .page-404 h1 {
-	font-size: 130px;
-	line-height: 150px;
+    font-size: 130px;
+    line-height: 150px;
   }
 }
 
 @media (max-width: 400px) {
   .page-404 h1 {
-	font-size: 100px;
-	line-height: 100px;
+    font-size: 100px;
+    line-height: 100px;
   }
 }
 
 @media (max-width: 768px) {
   .page-404 h1 {
-	font-size: 150px;
-	line-height: 200px;
+    font-size: 150px;
+    line-height: 200px;
   }
 }
 
@@ -2611,8 +2602,8 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 @media (max-width: 400px) {
   .social-icon ul li {
-	margin-bottom: 5px;
-	margin-right: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
   }
 }
 
