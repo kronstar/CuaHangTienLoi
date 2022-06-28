@@ -7,13 +7,22 @@ namespace CuaHangTienLoi.Web.Models.SanPhamModel
 {
     public class SanPhamDAO
     {
-
         public static List<SanPham> getAllSanPham()
         {
             List<SanPham> sanphams = (from sp in DBModels.Instance.SanPhams select sp).ToList();
             if (sanphams.Any())
                 return sanphams;
             return null;
+        }
+        public static int countAllSanPham()
+        {
+            List<SanPham> sanphams = (from sp in DBModels.Instance.SanPhams select sp).ToList();
+            int tong = sanphams.Select(x => x.MaSanPham).Count();
+            if (tong == 0)
+            {
+                return 0;
+            }
+            return tong;
         }
         public static List<SanPham> getAllSanPhamById(int id)
         {
@@ -51,10 +60,6 @@ namespace CuaHangTienLoi.Web.Models.SanPhamModel
                           where sp.TenSanPham.ToLower().Contains(name.ToLower())
                           select sp).ToList();
             return result;
-            //List<SanPham> items = (from item in DBContextEvaShop.Instance.Set<SanPham>().AsEnumerable()
-            //                       where Func.convertToUnsign(item.TenSanPham).ToLower().Contains(Func.convertToUnsign(name.ToLower()))
-            //                       select item).ToList();
-            //return items;
         }
 
         public static bool remove(SanPham sanpham)

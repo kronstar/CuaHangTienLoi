@@ -15,7 +15,7 @@ namespace CuaHangTienLoi.Web.Models.TaiKhoanModel
         /// <returns>danh sách user</returns>
         public static List<TaiKhoan> getAllUser()
         {
-            List<TaiKhoan> users = (from us in DBModels.Instance.TaiKhoans where us.DaXoa == false select us).ToList();
+            List<TaiKhoan> users = (from us in DBModels.Instance.TaiKhoans select us).ToList();
             if (users.Any())
                 return users;
             return null;
@@ -28,7 +28,7 @@ namespace CuaHangTienLoi.Web.Models.TaiKhoanModel
         public static TaiKhoan getUserById(int id)
         {
             TaiKhoan user =
-                (from us in DBModels.Instance.TaiKhoans where us.MaTaiKhoan == id && us.DaXoa == false select us)
+                (from us in DBModels.Instance.TaiKhoans where us.MaTaiKhoan == id select us)
                     .FirstOrDefault();
             return user;
         }
@@ -42,7 +42,7 @@ namespace CuaHangTienLoi.Web.Models.TaiKhoanModel
         public static TaiKhoan getUserByTenDangNhapAndMatKhau(string tendangnhap, string matkhau)
         {
             TaiKhoan users = (from us in DBModels.Instance.TaiKhoans
-                              where us.TenDangNhap == tendangnhap && us.MatKhau == matkhau && us.DaXoa == false
+                              where us.TenDangNhap == tendangnhap && us.MatKhau == matkhau
                               select us).FirstOrDefault();
             if (users != null)
                 return users;
@@ -93,7 +93,7 @@ namespace CuaHangTienLoi.Web.Models.TaiKhoanModel
         public static TaiKhoan getUserByTenDangNhapAndMatKhauAdmin(string tendangnhap, string matkhau)
         {
             TaiKhoan users = (from us in DBModels.Instance.TaiKhoans
-                              where us.TenDangNhap == tendangnhap && us.MatKhau == matkhau && us.PhanQuyen == true && us.DaXoa == false
+                              where us.TenDangNhap == tendangnhap && us.MatKhau == matkhau && us.PhanQuyen == true
                                    select us).FirstOrDefault();
             if (users != null)
                 return users;

@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Quản trị chức vụ";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="title-main">
+    @using (Html.BeginForm("CreateChucVu", "QuanTriChucVu", FormMethod.Post))
+    {
+        <input class="btn btn-primary m-3" type="submit" value="Thêm" name="add" />
+    }
+</div>
+
+@if (Model != null)
+{
+    int i = 1;
+    <table id="Mytable" class="tablesorter table">
+        <thead>
+            <tr>
+                <th style="width:40px;">STT</th>
+                <th>Tên chức vụ</th>
+                <th style="width:135px">Chức năng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var mn in Model)
+            {
+                var text = "";
+                <tr>
+                    <td style="text-align: center">@i</td>
+                    <td>@mn.TenChucVu</td>
+                    <td style="text-align: center">
+                        <div class="dropdown">
+                            <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-ellipsis-h text-black-50"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <a href="/QuanTriChucVu/EditChucVu?t=@mn.MaChucVu" class="dropdown-item d-flex">Chỉnh sửa</a>
+                                <a href="/QuanTriChucVu/DeleteChucVu?t=@mn.MaChucVu" class="dropdown-item d-flex">Xoá</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                i++;
+            }
+
+
+        </tbody>
+    </table>
+}

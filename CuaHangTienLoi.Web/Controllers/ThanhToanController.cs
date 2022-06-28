@@ -56,7 +56,7 @@ namespace CuaHangTienLoi.Controllers
                         hd.DiaChi = Request["diachi"];
                         hd.DienThoai = Request["sodienthoai"];
                         hd.NgayDat = DateTime.Now;
-                        hd.TrangThai = false;// chua giao hang la false
+                        hd.TinhTrangDonHang = 1;
                         hd.GhiChu = Request["ghichu"];
                         //hd.GiaTien = 0;
                         HoaDonDAO.addHoaDon(hd);
@@ -118,9 +118,10 @@ namespace CuaHangTienLoi.Controllers
                         hd.DiaChi = Request["diachi"];
                         hd.DienThoai = Request["sodienthoai"];
                         hd.NgayDat = DateTime.Now;
-                        hd.TrangThai = false;
+                        hd.TrangThai = 2;
                         hd.GhiChu = Request["ghichu"];
                         hd.Email = Request["email"];
+                        hd.TinhTrangDonHang = 1;
                         //hd.GiaTien = 0;
                         HoaDonDAO.addHoaDon(hd);
 
@@ -241,7 +242,7 @@ namespace CuaHangTienLoi.Controllers
 
                 int idlast = HoaDonDAO.getAllHoaDon().LastOrDefault().MaHoaDon;
                 HoaDon hdtmp = HoaDonDAO.getByIdHoaDon(idlast);
-                hdtmp.TrangThai = true;
+                hdtmp.TrangThai = 1;
                 HoaDonDAO.saveHoaDon(hdtmp);
             }
             else

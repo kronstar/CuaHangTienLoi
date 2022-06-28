@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Chỉnh sửa tài khoản";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<br />
+<div class="container mt-5" style="height: 100%">
+    @using (Html.BeginForm("EditTaiKhoan", "QuanTriTaiKhoan", FormMethod.Post))
+    {
+        if (Model != null)
+        {
+
+            <div class="container" style="height: 100%">
+                <div class="form-group">
+                    <input type="text" hidden id="tenchudeslide" class="form-control" name="mataikhoan" value="@Model.MaTaiKhoan" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Tên đăng nhập</label>
+                    <input type="text" id="tenchudeslide" class="form-control" name="tendangnhap" value="@Model.TenDangNhap" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Mật khẩu</label>
+                    <input type="text" id="tenchudeslide" class="form-control" name="matkhau" value="@Model.MatKhau" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Họ tên</label>
+                    <input type="text" id="tenchudeslide" class="form-control" name="hoten" value="@Model.HoTen" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Địa chỉ</label>
+                    <input type="text" id="tenchudeslide" class="form-control" name="diachi" value="@Model.DiaChi" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Số điện thoại</label>
+                    <input type="text" id="tenchudeslide" class="form-control" name="sodienthoai" value="@Model.SoDienThoai" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="text" id="tenchudeslide" class="form-control" name="email" value="@Model.Email" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Ngày sinh</label>
+                    <input type="date" id="tenchudeslide" class="form-control" name="ngaysinh" value="@Model.NgaySinh.ToString("yyyy-MM-dd")" />
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Giới tính</label>
+                    <select name="gioitinh" id="gioitinh" class="custom-select">
+                        @if (Model.GioiTinh == false)
+                        {
+                            <option selected value="false">Nam</option>
+                            <option value="true">Nữ</option>
+                        }
+                        else
+                        {
+                            <option selected value="true">Nữ</option>
+                            <option value="false">Nam</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Phân quyền</label>
+                    <select name="phanquyen" id="phanquyen" class="custom-select">
+                        <option value="true">Quản trị viên</option>
+                        <option value="false">Khách hàng</option>
+                    </select>
+                </div>
+                <button type="submit" name="saveclose" class="btn btn-outline-primary">Lưu và đóng</button>
+                <button type="submit" name="cancel" class="btn btn-danger">Huỷ</button>
+            </div>
+        }
+    }
+</div>
+<br />

@@ -22,8 +22,6 @@ namespace CuaHangTienLoi.Web.Models.TaiKhoanModel
 
         public bool PhanQuyen { get; set; }
 
-        public bool? DaXoa { get; set; }
-
         [StringLength(50)]
         public string HoTen { get; set; }
 

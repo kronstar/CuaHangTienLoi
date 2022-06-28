@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Danh sách đơn hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+@if (Model != null)
+{
+    int i = 1;
+    <table id="Mytable" class="tablesorter table">
+        <thead>
+            <tr>
+                <th>STT</th>
+                @*<th>Tên Khách Hàng</th>*@
+                <th>Người nhận</th>
+                <th>Địa chỉ</th>
+                <th>Số ĐT</th>
+                @*<th>Email</th>*@
+                <th>Thời gian đặt hàng</th>
+                @*<th>Ghi chú</th>*@
+                <th>Tổng hoá đơn</th>
+                <th>Trạng thái</th>
+                <th>Tình trạng</th>
+                @*<th>Ghi Chú</th>*@
+                <th>Chức năng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var text = "";
+                <tr>
+                    <td>@i</td>
+                    @*<td>@item.User.TenKhachHang</td>*@
+                    <td>@item.HoTenNguoiMua</td>
+                    <td>@item.DiaChi</td>
+                    <td>@item.DienThoai</td>
+                    @*<td>@item.Email</td>*@
+                    <td>@item.NgayDat</td>
+                    @*<td>@item.GhiChu</td>*@
+                    @*<td style="text-align:center">@item.NgayGiaoHang.ToString("dd-MM-yyyy")</td>*@
+                    <td>@item.TongHoaDon.ToString("N0") VNĐ</td>
+                    <td>
+                        @if (@item.TinhTrangDonHang == 3)
+                        {
+                            <span class="badge badge-success">Đã thanh toán</span>
+                        }
+                        else
+                        {
+
+                            if (@item.TrangThai == 1)
+                            {
+                                <span class="badge badge-success">Đã thanh toán</span>
+                            }
+                            if (@item.TrangThai == 2)
+                            {
+                                <span class="badge badge-success">Chưa thanh toán</span>
+                            }
+                            if (@item.TrangThai == 3)
+                            {
+                                <span class="badge badge-warning">Đã hoàn tiền</span>
+                            }
+                        }
+                    </td>
+                    <td>
+                        @if (@item.TinhTrangDonHang == 1)
+                        {
+                            <p>Đặt hàng thành công</p>
+                        }
+                        @if (@item.TinhTrangDonHang == 2)
+                        {
+                            <p>Đang giao hàng</p>
+                        }
+                        @if (@item.TinhTrangDonHang == 3)
+                        {
+                            <p> Hoàn thành </p>
+                        }
+                        @if (@item.TinhTrangDonHang == 4)
+                        {
+                            <p>Đã huỷ</p>
+                        }
+                    </td>
+                    <td>
+                        <a href="/QuanTriHoaDon/ChiTietHoaDon?t=@item.MaHoaDon" class="btn-link">Chi tiết</a>
+                    </td>
+                </tr>
+                i++;
+            }
+
+
+        </tbody>
+    </table>
+}
+

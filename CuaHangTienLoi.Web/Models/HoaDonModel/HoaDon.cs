@@ -5,6 +5,7 @@ namespace CuaHangTienLoi.Web.Models.HoaDonModel
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using CuaHangTienLoi.Web.Models.NhanVienModel;
     using CuaHangTienLoi.Web.Models.TaiKhoanModel;
 
     [Table("HoaDon")]
@@ -12,14 +13,16 @@ namespace CuaHangTienLoi.Web.Models.HoaDonModel
     {
         [Key]
         public int MaHoaDon { get; set; }
+        public int? MaNhanVien { get; set; }
+        public int TinhTrangDonHang { get; set; }
 
         public int? MaTaiKhoan { get; set; }
 
         public DateTime? NgayDat { get; set; }
 
-        public bool TrangThai { get; set; }
+        public int TrangThai { get; set; }
 
-        public int? TongHoaDon { get; set; }
+        public int TongHoaDon { get; set; }
 
         public string GhiChu { get; set; }
 
@@ -31,5 +34,7 @@ namespace CuaHangTienLoi.Web.Models.HoaDonModel
         public string DienThoai { get; set; }
         [ForeignKey("MaTaiKhoan")]
         public virtual TaiKhoan TaiKhoans { get; set; }
+        [ForeignKey("MaNhanVien")]
+        public virtual NhanVien NhanViens { get; set; }
     }
 }

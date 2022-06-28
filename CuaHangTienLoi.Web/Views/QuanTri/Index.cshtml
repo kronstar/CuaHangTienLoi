@@ -4,5 +4,75 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
 
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Tổng đơn hàng</th>
+            <th scope="col">Đặt hàng thành công</th>
+            <th scope="col">Đang giao hàng</th>
+            <th scope="col">Hoàn thành</th>
+            <th scope="col">Đã huỷ</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@ViewBag.TongHoaDon đơn</td>
+            <td>@ViewBag.DatHangThanhCong đơn</td>
+            <td>@ViewBag.DangGiaoHang đơn</td>
+            <td>@ViewBag.HoanThanh đơn</td>
+            <td>@ViewBag.DaHuy đơn</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Tổng sản phẩm</th>
+            <th scope="col">Tổng nhân viên</th>
+            <th scope="col">Tổng lương nhân viên</th>
+            <th scope="col">Doanh thu tháng</th>
+            <th scope="col">Lời/Lỗ</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@ViewBag.TongSanPham sản phẩm</td>
+            <td>@ViewBag.NhanVien nhân viên</td>
+            <td>@ViewBag.TongLuong.ToString("N0") VNĐ</td>
+            <td>@ViewBag.TongDoanhThuThangNay.ToString("N0") VNĐ</td>
+            <td>
+                @if (ViewBag.DoanhThu < 0)
+                {
+                    <p style="color:red">@ViewBag.DoanhThu.ToString("N0") VNĐ</p>
+                }
+                else
+                {
+                    <p style="color:green">@ViewBag.DoanhThu.ToString("N0") VNĐ</p>
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Tổng doanh thu</th>
+            <th scope="col">Tổng doanh thu dự kiến</th>
+            <th scope="col">Tổng doanh thu tháng</th>
+            <th scope="col">Tổng doanh thu tháng dự kiến</th>
+            <th scope="col">Chờ nhận</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@ViewBag.TongDoanhThuHienTai.ToString("N0") VNĐ</td>
+            <td>@ViewBag.TongDoanhThuDuKien.ToString("N0") VNĐ</td>
+            <td>@ViewBag.TongDoanhThuThangNay.ToString("N0") VNĐ</td>
+            <td>@ViewBag.TongDoanhThuThangNayDuKien.ToString("N0") VNĐ</td>
+            <td>@ViewBag.TongDoanhThuChoVeThangNay.ToString("N0") VNĐ</td>
+        </tr>
+    </tbody>
+</table>

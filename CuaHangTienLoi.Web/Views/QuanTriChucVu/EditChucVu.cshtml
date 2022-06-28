@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Chỉnh sửa chức vụ";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br />
+<div class="container m-5" style="height: 100%">
+    @using (Html.BeginForm("EditChucVu", "QuanTriChucVu", FormMethod.Post))
+    {
+        if (Model != null)
+        {
+
+            <div class="container" style="height: 100%">
+                <div class="form-group">
+                    <input type="hidden" value="@Model.MaChucVu" name="machucvu" />
+                    <label for="exampleInputEmail1">Tên chức vụ</label>
+                    <input type="text" placeholder="Tên danh mục" id="tenchudeslide" class="form-control" name="tenchucvu" value="@Model.TenChucVu" />
+                </div>
+                <button type="submit" name="saveclose" class="btn btn-outline-primary">Lưu và đóng</button>
+                <button type="submit" name="cancel" class="btn btn-danger">Huỷ</button>
+            </div>
+        }
+    }
+</div>

@@ -128,7 +128,7 @@ namespace CuaHangTienLoi.Web.Controllers
                 }
                 else if (Request["cancel"] != null)
                 {
-                    return RedirectToAction("Index", "ManagerSanPham");
+                    return RedirectToAction("Index", "QuanTriSanPham");
                 }
                 else { }
                 return View();

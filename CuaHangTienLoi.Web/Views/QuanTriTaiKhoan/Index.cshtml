@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Quản lý tài khoản";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br />
+
+@if (Model != null)
+{
+    int i = 1;
+    <table id="Mytable" class="tablesorter table">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Họ tên</th>
+                @*<th>Ngày Sinh</th>*@
+                <th>Giới tính</th>
+                <th>Địa Chỉ</th>
+                <th>Điện Thoại</th>
+                <th>Email</th>
+                @*<th>Tên Đăng Nhập</th>
+                    <th>Mật khẩu</th>*@
+                <th>Phân Quyền</th>
+                @*<th>Xóa Tạm</th>*@
+                <th>Chức năng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@item.HoTen</td>
+                    @*<td>@item.NgaySinh</td>*@
+                <td>
+                    @if (item.GioiTinh == false)
+                    {
+                        <p>Nam</p>
+                    }
+                    else
+                    {
+                        <p>Nữ</p>
+                    }
+                </td>
+                    <td>@item.DiaChi</td>
+                    <td>@item.SoDienThoai</td>
+                    <td>@item.Email</td>
+                    @*<td>@item.TenDangNhap</td>
+                        <td>@item.MatKhau</td>*@
+                    <td>
+                        @if(item.PhanQuyen == true)
+                    {
+                        <p>Quản trị viên</p>
+                    }
+                        else
+                    {
+                        <p>Khách hàng</p>
+                    }
+                    </td>
+                    @*<td>@item.Deleted</td>*@
+                    <td>
+                        <a href="/QuanTriTaiKhoan/EditTaiKhoan?t=@item.MaTaiKhoan" class="btn-link">Chỉnh sửa</a>
+                    </td>
+                </tr>
+                i++;
+            }
+
+
+        </tbody>
+    </table>
+}

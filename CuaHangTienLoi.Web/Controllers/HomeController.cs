@@ -134,14 +134,6 @@ namespace CuaHangTienLoi.Web.Controllers
                         {
                             kh.PhanQuyen = false;
                         }
-                        if (Request["show2"] == "on")
-                        {
-                            kh.DaXoa = true;
-                        }
-                        else
-                        {
-                            kh.DaXoa = false;
-                        }
                         TaiKhoanDAO.addKhachHang(kh);
                         Session["nguoidung"] = kh.TenDangNhap;
                     }

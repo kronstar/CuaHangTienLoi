@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Thêm nhân viên";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br />
+
+<div class="container m-5" style="height: 100%">
+    @using (Html.BeginForm("CreateNhanVien", "QuanTriNhanVien", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    <div class="container" style="height: 100%">
+
+        <div class="form-group">
+            <label class="lb-mid">Họ tên</label>
+            <input type="text" class="form-control" name="hoten" id="hoten" />
+        </div>
+
+        <div class="form-group">
+            <label class="lb-mid">Chức vụ</label>
+            @if (ViewBag.TenChucVu != null)
+            {
+                <select name="machucvu" id="machucvu" class="custom-select">
+                    @foreach (var i in ViewBag.TenChucVu)
+                    {
+                        <option value="@i.MaChucVu">@i.TenChucVu</option>
+
+                    }
+                </select>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Đia chỉ</label>
+            <textarea class="form-control" id="diachi" name="diachi"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label class="lb-mid">Số điện thoại</label>
+            <input type="text" class="form-control" name="sodienthoai" id="sodienthoai" />
+        </div>
+
+        <div class="form-group">
+            <label class="lb-mid">Lương</label>
+            <input type="text" class="form-control" name="luong" id="luong" />
+        </div>
+
+        <div class="form-group">
+            <label class="lb-mid">Ngày sinh</label>
+            <input type="date" class="form-control" name="ngaysinh" id="ngaysinh" />
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Giới tính</label>
+            <select name="gioitinh" id="gioitinh" class="custom-select">
+                <option value="false">Nam</option>
+                <option value="true">Nữ</option>
+            </select>
+        </div>
+        <button type="submit" name="saveclose" class="btn btn-outline-primary">Lưu và đóng</button>
+        <button type="submit" name="save" class="btn btn-primary">Lưu</button>
+        <button type="submit" name="cancel" class="btn btn-danger">Huỷ</button>
+    </div>
+    }
+</div>

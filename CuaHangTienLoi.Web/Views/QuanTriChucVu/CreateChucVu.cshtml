@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Thêm chức vụ";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br />
+<div class="container m-5" style="height: 100%">
+    @using (Html.BeginForm("CreateChucVu", "QuanTriChucVu", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+
+        <div class="container" style="height: 100%">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Tên chức vụ</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="tenchucvu">
+            </div>
+            <button type="submit" name="save" class="btn btn-outline-primary">Lưu và đóng</button>
+            <button type="submit" name="saveclose" class="btn btn-primary">Lưu</button>
+            <button type="submit" name="cancel" class="btn btn-danger">Huỷ</button>
+        </div>
+    }
+</div>

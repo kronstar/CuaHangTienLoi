@@ -4,9 +4,11 @@ using System.Data.Entity;
 using System.Linq;
 using CuaHangTienLoi.Web.Models.AnhSanPhamModel;
 using CuaHangTienLoi.Web.Models.ChiTietHoaDonModel;
+using CuaHangTienLoi.Web.Models.ChucVuModel;
 using CuaHangTienLoi.Web.Models.DanhMucModel;
 using CuaHangTienLoi.Web.Models.HoaDonModel;
 using CuaHangTienLoi.Web.Models.NhaCungCapModel;
+using CuaHangTienLoi.Web.Models.NhanVienModel;
 using CuaHangTienLoi.Web.Models.SanPhamModel;
 using CuaHangTienLoi.Web.Models.SliderModel;
 using CuaHangTienLoi.Web.Models.TaiKhoanModel;
@@ -59,6 +61,8 @@ namespace CuaHangTienLoi.Web.Models
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<TaiKhoan> TaiKhoans { get; set; }
         public DbSet<TinTuc> TinTucs { get; set; }
+        public DbSet<ChucVu> ChucVus { get; set; }
+        public DbSet<NhanVien> NhanViens { get; set; }
 
         /*protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Chỉnh sửa nhân viên";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br />
+
+<div class="container m-5" style="height: 100%">
+    @using (Html.BeginForm("EditNhanVien", "QuanTriNhanVien", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        if (Model != null)
+        {
+        <input type="hidden" value="@Model.MaNhanVien" name="manhanvien" />
+        @*<input type="hidden" value="@Model.MaChucVu" name="machucvu" />*@
+
+        <div class="form-group">
+            <label class="lb-mid">Họ tên</label>
+            <input type="text" class="form-control" name="hoten" id="hoten" value="@Model.HoTen" />
+        </div>
+
+        <div class="form-group">
+            <label class="lb-mid">Chức vụ</label>
+            <select class="custom-select" name="machucvu" id="machucvu">
+                @foreach (var i in ViewBag.TenChucVu)
+                {
+                    if (@Model.MaChucVu == @i.MaChucVu)
+                    {
+                        <option selected value="@i.MaChucVu">@i.TenChucVu</option>
+                    }
+                    else
+                    {
+                        <option value="@i.MaChucVu">@i.TenChucVu</option>
+                    }
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="lb-mid">Số điện thoại</label>
+            <input type="text" class="form-control" name="sodienthoai" id="sodienthoai" value="@Model.SoDienThoai" />
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Địa chỉ</label>
+            <textarea class="form-control" id="diachi" name="diachi">@Model.DiaChi</textarea>
+        </div>
+
+        <div class="form-group">
+            <label class="lb-mid">Ngày sinh</label>
+            <input type="date" class="form-control" name="ngaysinh" id="ngaysinh" value="@Model.NgaySinh.ToString("yyyy-MM-dd")" />
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Giới tính</label>
+            <select name="gioitinh" id="gioitinh" class="custom-select">
+                @if (Model.GioiTinh == false)
+                {
+                    <option selected value="false">Nam</option>
+                    <option value="true">Nữ</option>
+                }
+                else
+                {
+                    <option selected value="true">Nữ</option>
+                    <option value="false">Nam</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Ngày tham gia</label>
+            <input readonly class="form-control" id="ngaythamgia" name="ngaythamgia" value="@Model.NgayThamGia.ToString("dd-MM-yyyy")"/>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Lương</label>
+            <input class="form-control" id="luong" name="luong" value="@Model.Luong"/>
+        </div>
+
+        <button type="submit" name="saveclose" class="btn btn-outline-primary">Lưu và đóng</button>
+        <button type="submit" name="cancel" class="btn btn-danger">Huỷ</button>
+        }
+    }
+</div>

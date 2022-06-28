@@ -215,13 +215,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ChiTietSanPhamController.cs" />
+    <Compile Include="Controllers\QuanTriChucVuController.cs" />
     <Compile Include="Controllers\DangKyController.cs" />
     <Compile Include="Controllers\DangNhapController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QuanTriNhanVienController.cs" />
     <Compile Include="Controllers\QuanTriController.cs" />
     <Compile Include="Controllers\QuanTriDanhMucController.cs" />
     <Compile Include="Controllers\QuanTriHoaDonController.cs" />
-    <Compile Include="Controllers\QuanTriKhachHangController.cs" />
+    <Compile Include="Controllers\QuanTriTaiKhoanController.cs" />
     <Compile Include="Controllers\QuanTriNhaCungCapController.cs" />
     <Compile Include="Controllers\QuanTriSanPhamController.cs" />
     <Compile Include="Controllers\QuanTriTinTucController.cs" />
@@ -238,6 +240,8 @@
     <Compile Include="Models\CartModel\CartDAO.cs" />
     <Compile Include="Models\ChiTietHoaDonModel\ChiTietHoaDonDAO.cs" />
     <Compile Include="Models\ChiTietHoaDonModel\ChiTietHoaDon.cs" />
+    <Compile Include="Models\ChucVuModel\ChucVu.cs" />
+    <Compile Include="Models\ChucVuModel\ChucVuDAO.cs" />
     <Compile Include="Models\DanhMucModel\DanhMucDAO.cs" />
     <Compile Include="Models\DanhMucModel\DanhMuc.cs" />
     <Compile Include="Models\Core.cs" />
@@ -246,6 +250,8 @@
     <Compile Include="Models\HoaDonModel\HoaDon.cs" />
     <Compile Include="Models\NhaCungCapModel\NhaCungCapDAO.cs" />
     <Compile Include="Models\NhaCungCapModel\NhaCungCap.cs" />
+    <Compile Include="Models\NhanVienModel\NhanVien.cs" />
+    <Compile Include="Models\NhanVienModel\NhanVienDAO.cs" />
     <Compile Include="Models\SanPhamModel\SanPhamDAO.cs" />
     <Compile Include="Models\SanPhamModel\SanPham.cs" />
     <Compile Include="Models\SliderModel\SliderDAO.cs" />
@@ -308,7 +314,7 @@
     <Content Include="Content\vendors\slick\fonts\slick.svg" />
     <Content Include="Content\vendors\slick\slick-theme.css" />
     <Content Include="Content\vendors\slick\slick.css" />
-    <Content Include="Content\style.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="Content\vendors\themefisher-font\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -376,7 +382,7 @@
     <Content Include="Views\QuanTriSanPham\Index.cshtml" />
     <Content Include="Views\QuanTriHoaDon\Index.cshtml" />
     <Content Include="Views\QuanTriTinTuc\Index.cshtml" />
-    <Content Include="Views\QuanTriKhachHang\Index.cshtml" />
+    <Content Include="Views\QuanTriTaiKhoan\Index.cshtml" />
     <Content Include="Views\QuanTriDanhMuc\EditDanhMuc.cshtml" />
     <Content Include="Views\QuanTriDanhMuc\CreateDanhMuc.cshtml" />
     <Content Include="Views\QuanTriSanPham\CreateSanPham.cshtml" />
@@ -386,6 +392,16 @@
     <Content Include="Views\QuanTriNhaCungCap\CreateNhaCungCap.cshtml" />
     <Content Include="Views\QuanTriTinTuc\EditTinTuc.cshtml" />
     <Content Include="Views\QuanTriTinTuc\CreateTinTuc.cshtml" />
+    <Content Include="Views\QuanTriNhanVien\Index.cshtml" />
+    <Content Include="Views\QuanTriChucVu\Index.cshtml" />
+    <Content Include="Views\QuanTriChucVu\EditChucVu.cshtml" />
+    <Content Include="Views\QuanTriChucVu\CreateChucVu.cshtml" />
+    <Content Include="Views\QuanTriNhanVien\EditNhanVien.cshtml" />
+    <Content Include="Views\QuanTriNhanVien\CreateNhanVien.cshtml" />
+    <Content Include="Views\QuanTriHoaDon\EditHoaDon.cshtml" />
+    <Content Include="Views\QuanTriTaiKhoan\EditTaiKhoan.cshtml" />
+    <Content Include="Views\QuanTriHoaDon\HoaDon.cshtml" />
+    <Content Include="Views\QuanTriHoaDon\ChiTietHoaDon.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
